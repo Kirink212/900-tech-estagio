@@ -47,7 +47,7 @@ function encontra_limite_faixa_switch_case(categoria) {
             break;
         case "Sobrepeso":
             console.log("IMC de 25 à 30");
-            // break;
+            break;
         case "Obesidade":
             console.log("IMC igual ou superior a 30");
             break;
@@ -189,8 +189,8 @@ for (let cont = 0; cont < 3; cont++) {
 
     const imc = calcula_imc(peso, altura);
 
-    // array_imc.push(parseFloat(imc.toFixed(2)));
-    array_imc.unshift(parseFloat(imc.toFixed(2)));
+    array_imc.push(parseFloat(imc.toFixed(2)));
+    // array_imc.unshift(parseFloat(imc.toFixed(2)));
 
     console.log("O seu IMC é:", imc);
 
