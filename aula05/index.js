@@ -128,21 +128,19 @@ for (let i in palavra) {
 }
 const array_string = string_inicial.split("");
 
-// for (let i=0; i<palavra.length; i++) {
-//     let array_palavra = palavra.substring(i).split("");
-//     let index = array_palavra.indexOf(letra);
-//     if (index == -1)
-//         break
-//     else {
-//         array_string[index] = letra;
-//         i = index + 1;
-//     }
-// }
-
-for (let i=0; i<palavra.length; i++) {
-    if (palavra[i] == letra) {
-        array_string[i] = letra;
+if (palavra.includes(letra)) {
+    // trocar _ em todas as posições em que existir a letra digitada na minha palavra original
+    for (let i = 0; i < palavra.length; i++) {
+        if (palavra[i] == letra) {
+            array_string[i] = letra;
+        }
     }
+    console.log("Acertou!");
+} else {
+    console.log("Errou!");
 }
 
 console.log(array_string);
+
+// Como converter um array em uma string... EM SOMENTE UMA LINHA
+console.log(array_string.join(''));
