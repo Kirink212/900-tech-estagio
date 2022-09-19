@@ -84,8 +84,10 @@ console.log(copia_notas);
 console.log(notas);
 
 // Função que recebe um número indefinido de parâmetros, e junta todos eles em um mesmo array
-function soma_numeros(...numeros) {
+function soma_numeros(primeiro, ...numeros) {
     let soma = 0;
+
+    console.log("Primeiro número passado por parâmetro", primeiro);
     for (let i = 0; i < numeros.length; i++) {
         soma += numeros[i];
     }
@@ -102,8 +104,7 @@ console.log(soma_numeros(9, 10, 3, 20, 10, 10, 2, 3, 4, 51));
 
 // Desestruturei o meu array, podendo acessar os elementos individualmente
 // Caso eu queira usar o resto dos elementos, eu posso agrupá-los em um sub-array (rest operator)
-const [mais_alto, segundo_mais_alto] = [1.72, 1.75, 1.65, 1.86, 1.74].sort((a, b) => b - a);
+const [mais_alto, segundo_mais_alto, ...outros_meros_mortais] = [1.72, 1.75, 1.65, 1.86, 1.74].sort((a, b) => b - a);
 console.log(mais_alto);
 console.log(segundo_mais_alto);
 console.log(outros_meros_mortais);
-
