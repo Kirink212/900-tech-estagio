@@ -35,7 +35,17 @@ function mostraPalavraRecursiva(palavra) {
 mostraPalavraRecursiva("Lucas");
 
 // Fatorial
-// Solução de vocês!!
+function fatorial(n) {
+    if (n == 0 || n == 1) return 1;
+    return n * fatorial(n - 1);
+}
+
+function fatorial_visual(n) {
+    if (n == 0 || n == 1) return "1";
+    return `${n} * ` + fatorial_visual(n-1);
+}
+
+console.log(fatorial_visual(5));
 
 // Uso da recursão "obrigatório"
 // Descobrir a soma de todos os elementos do array abaixo
