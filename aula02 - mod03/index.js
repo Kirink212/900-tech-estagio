@@ -5,6 +5,13 @@ class No {
     }
 }
 
+class NoString {
+    constructor(string) {
+        this.info = string;
+        this.prox = undefined;
+    }
+}
+
 class ListaEncadeada {
     constructor() {
         this.cabeca = undefined;
@@ -33,6 +40,12 @@ class ListaEncadeada {
     remover(numero) {
         let no_aux;
         let no_ant = undefined;
+
+        if (this.total_elementos == 0){
+            console.error("Não é possível remover nenhum elemento da lista vazia!");
+            return;
+        }
+
         for (no_aux = this.cabeca; no_aux != undefined; no_aux = no_aux.prox) {
             if (no_aux.info == numero) {
                 break;
@@ -45,6 +58,8 @@ class ListaEncadeada {
             console.error("O número solicitado não existe na Lista!");
             return;
         }
+
+        this.total_elementos--;
 
         // Caso o número seja o primeiro da lista
         if (no_ant == undefined) {
