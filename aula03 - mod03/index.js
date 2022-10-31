@@ -27,7 +27,7 @@ function buscaBinaria(array, numero, ini = 0, fim = array.length - 1) {
         return meio;
     } else if (numero < array[meio]) {
         return buscaBinaria(array, numero, ini, meio - 1);
-    } else  {
+    } else {
         return buscaBinaria(array, numero, meio + 1, fim);
     }
 }
@@ -93,3 +93,51 @@ let diff2 = endTime - startTime;
 console.log(`Busca binária levou ${diff2} milliseconds`);
 
 console.log(diff1 > diff2);
+
+let  arrayFilmes = [
+    {
+        nome: "Avatar",
+        avaliacao: 5
+    },
+    {
+        nome: "Vingadores Ultimato",
+        avaliacao: 5
+    },
+    {
+        nome: "Homem-Aranha: Sem Volta para Casa",
+        avaliacao: 4
+    },
+    {
+        nome: "Senhor dos Anéis: O Retorno do Rei",
+        avaliacao: 5
+    },
+    {
+        nome: "Venom",
+        avaliacao: 1
+    },
+    {
+        nome: "Click",
+        avaliacao: 3
+    }
+];
+
+arrayFilmes.sort((f1, f2) => f1.avaliacao - f2.avaliacao);
+
+console.log(arrayFilmes);
+
+function buscaFilmeBinaria(arrayFilmes, filme, ini = 0, fim = arrayFilmes.length - 1) {
+    if (fim < ini) return -1;
+
+    const meio = Math.floor((ini + fim)/2);
+    
+    if (filme.avaliacao == arrayFilmes[meio].avaliacao) return meio;
+    else if (filme.avaliacao > arrayFilmes[meio].avaliacao)
+        return buscaFilmeBinaria(arrayFilmes, filme, meio + 1, fim);
+    else
+        return buscaFilmeBinaria(arrayFilmes, filme, ini, meio - 1);
+}
+
+console.log(buscaFilmeBinaria(arrayFilmes, {
+    nome: "Senhor dos Anéis: O Retorno do Rei",
+    avaliacao: 5
+}));
