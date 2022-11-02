@@ -52,8 +52,8 @@ function bubbleSort(array) {
 
 // const array2 = [1, 2, 3, 7, 5, 6]; -> Array para teste da otimização
 
-console.log(bubbleSortRec(array));
-console.log(bubbleSort(array));
+// console.log(bubbleSortRec(array));
+// console.log(bubbleSort(array));
 
 // Insertion Sort -> O(n^2)
 function insertionSort(array) {
@@ -79,7 +79,7 @@ function insertionSort(array) {
 
     return array;
 }
-console.log(insertionSort(array));
+// console.log(insertionSort(array));
 
 // Merge Sort
 
@@ -125,7 +125,7 @@ function mergeSort(array) {
     return merge(arrayLeft, arrayRight);
 }
 
-console.log(mergeSort(array));
+// console.log(mergeSort(array));
 
 // Quick Sort
 
@@ -140,7 +140,7 @@ function quicksortRec(array, ini = 0, fim = array.length - 1) {
     let esq = ini;
     let dir = pivot - 1;
 
-    console.log("Este é o pivot desta chamada:", pivot);
+    console.log("Este é o pivot desta chamada:", array[pivot]);
 
     while(esq < dir) {
         // Andar com o ponteiro da esq até encontrar um elemento maior que o pivot,
@@ -149,20 +149,26 @@ function quicksortRec(array, ini = 0, fim = array.length - 1) {
 
         // Andar com o ponteiro da dir até encontrar um elemento menor que o pivot,
         // ou até esbarrar no ponteiro da esquerda
-        while(array[pivot] < array[dir]) dir--;
+        while(array[pivot] <= array[dir]) dir--;
 
         if (esq < dir) {
             // Caso contrário, trocar com o elem da esquerda com o elem da direita
             let aux = array[esq];
             array[esq] = array[dir];
             array[dir] = aux;
+            confirm("Confirmar a troca da esquerda com a direita");
+            console.log("Array após troca:", array);
         }
     }
 
     // Caso os índices tenham coincidido, trocar com o pivot
-    let aux = array[esq];
-    array[esq] = array[pivot];
-    array[pivot] = aux;
+    if (array[esq] > array[pivot]) {
+        let aux = array[esq];
+        array[esq] = array[pivot];
+        array[pivot] = aux;
+        confirm("Confirmar a troca do pivot");
+        console.log("Array após troca:", array);
+    }
 
     quicksortRec(array, ini, esq-1);
     quicksortRec(array, esq+1, fim);
@@ -171,4 +177,4 @@ function quicksortRec(array, ini = 0, fim = array.length - 1) {
 }
 
 const array_quick = [9, 1, 8, 2, 7, 4, 3];
-console.log(quicksortRec(array_quick));
+console.log(quicksortRec(array));
