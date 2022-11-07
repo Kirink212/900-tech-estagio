@@ -129,49 +129,55 @@ function mergeSort(array) {
 
 // Quick Sort
 
-function partition(array, esq, dir) {
-
-}
-
-function quicksortRec(array, ini = 0, fim = array.length - 1) {
-    if (ini >= fim) return;
-
+function partition(array, ini, fim) {
     const pivot = fim;
     let esq = ini;
     let dir = pivot - 1;
 
+    confirm("Realizando o partition");
     console.log("Este é o pivot desta chamada:", array[pivot]);
 
     while(esq < dir) {
-        // Andar com o ponteiro da esq até encontrar um elemento maior que o pivot,
-        // ou até esbarrar no ponteiro da direita
+        // Andar com o ponteiro da esq até encontrar um elemento maior que o pivot
         while(array[pivot] > array[esq]) esq++;
 
-        // Andar com o ponteiro da dir até encontrar um elemento menor que o pivot,
-        // ou até esbarrar no ponteiro da esquerda
+        // Andar com o ponteiro da dir até encontrar um elemento menor que o pivot
         while(array[pivot] <= array[dir]) dir--;
 
         if (esq < dir) {
             // Caso contrário, trocar com o elem da esquerda com o elem da direita
+            confirm("Confirmar a troca da esquerda com a direita");
             let aux = array[esq];
             array[esq] = array[dir];
             array[dir] = aux;
-            confirm("Confirmar a troca da esquerda com a direita");
             console.log("Array após troca:", array);
         }
     }
 
-    // Caso os índices tenham coincidido, trocar com o pivot
+    // Caso os índices tenham coincidido ou se ultrapassado, trocar com o pivot
     if (array[esq] > array[pivot]) {
+        confirm("Confirmar a troca do pivot");
         let aux = array[esq];
         array[esq] = array[pivot];
         array[pivot] = aux;
-        confirm("Confirmar a troca do pivot");
         console.log("Array após troca:", array);
     }
 
-    quicksortRec(array, ini, esq-1);
-    quicksortRec(array, esq+1, fim);
+    return esq;
+}
+
+function quicksortRec(array, ini = 0, fim = array.length - 1) {
+    if (ini >= fim) {
+        confirm("Cheguei no caso base para o número:", array[0]);
+        return;
+    }
+
+    const pivot = partition(array, ini, fim);
+
+    confirm("Chamando recursivamente para a esquerda");
+    quicksortRec(array, ini, pivot-1);
+    confirm("Chamando recursivamente para a direita");
+    quicksortRec(array, pivot+1, fim);
 
     return array;
 }
